@@ -36,7 +36,7 @@
 
 #ABCDEFGHIJKLLAHMFNKOPCQQRSKTTAULHVJKLLAHM
 
-## recursive:
+## recursive (wrong):
 
 #  for c in enc_alph_list
 #    recursive(c):
@@ -47,6 +47,9 @@
 #      else:
 #        print_decode(decode())
 
+#itertools (eats RAM and dies, compare https://stackoverflow.com/questions/104420/how-to-generate-all-permutations-of-a-list)
+
+#list(itertools.permutations(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']))
 
 import string
 
@@ -68,9 +71,17 @@ def output_decrypt(dec_str_list, attempt_no){
         print("Attempt: " + attempt_no + ": " + dec_str_list + "\n")
         }
 
+## All wrong, manipulates the alphabet instead of the enc_str
+
 def permutate(dec_map, iteration){
-        for i in #idk do
-            #do recursive logic
+        for c in enc_alph_list:
+            i = 1
+            for d in alphabet_list:
+                c = d
+                if c != str(enc_alph_list[-1]):
+                   iteration = permutate(i+1, iteration)
+                else:
+                    output_print()
         dec_str_list = decrypt(dec_map, enc_str_list)
         output_print(dec_str_list, iteration)
         iteration = iteration + 1
