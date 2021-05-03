@@ -36,6 +36,17 @@
 
 #ABCDEFGHIJKLLAHMFNKOPCQQRSKTTAULHVJKLLAHM
 
+## recursive:
+
+#  for c in enc_alph_list
+#    recursive(c):
+#    for d in alph_list
+#      c = d
+#      if c != is_last_element
+#        recursive(c+1)
+#      else:
+#        print_decode(decode())
+
 
 import string
 
