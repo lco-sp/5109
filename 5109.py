@@ -52,6 +52,7 @@
 #list(itertools.permutations(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']))
 
 import string
+import itertools
 
 enc_str = "ABCDEFGHIJKLLAHMFNKOPCQQRSKTTAULHVJKLLAHM"
 
@@ -59,38 +60,45 @@ alphabet_list = list(string.ascii_lowercase + string.digits)
 
 enc_alph_list = list("ABCDEFGHIJKLMNOPQRSTUV")
 
-enc_str_list=[]
-enc_str_list[:0]=enc_str
+i=0
 
-dec_map = [alphabet_list][enc_alph_list] #map one value from alpahbet_list to enc_alph_list
+for perm in set(itertools.combinations(alphabet_list, 22)):
+    print(i)
+    i = i+1
+
+
+#enc_str_list=[]
+#enc_str_list[:0]=enc_str
+
+#dec_map = [alphabet_list][enc_alph_list] #map one value from alpahbet_list to enc_alph_list
 #doesnt work like that, how to create clean mapping?
 
-dec_map = [len(alphabet_list)] #ref to enc_alph_list? permutate() needs logic to make sure no perms are ignored or duplicated
+#dec_map = [len(alphabet_list)] #ref to enc_alph_list? permutate() needs logic to make sure no perms are ignored or duplicated
 
-def output_decrypt(dec_str_list, attempt_no){
-        print("Attempt: " + attempt_no + ": " + dec_str_list + "\n")
-        }
+#def output_decrypt(dec_str_list, attempt_no){
+#        print("Attempt: " + attempt_no + ": " + dec_str_list + "\n")
+#        }
 
 ## All wrong, manipulates the alphabet instead of the enc_str
 
-def permutate(dec_map, iteration){
-        for c in enc_alph_list:
-            i = 1
-            for d in alphabet_list:
-                c = d
-                if c != str(enc_alph_list[-1]):
-                   iteration = permutate(i+1, iteration)
-                else:
-                    output_print()
-        dec_str_list = decrypt(dec_map, enc_str_list)
-        output_print(dec_str_list, iteration)
-        iteration = iteration + 1
-        }
+#def permutate(dec_map, iteration){
+#        for c in enc_alph_list:
+#            i = 1
+#            for d in alphabet_list:
+#                c = d
+#                if c != str(enc_alph_list[-1]):
+#                   iteration = permutate(i+1, iteration)
+#                else:
+#                    output_print()
+#        dec_str_list = decrypt(dec_map, enc_str_list)
+#        output_print(dec_str_list, iteration)
+#        iteration = iteration + 1
+#        }
 
-def decrypt(dec_map, enc_str_list){
-        return dec_str_list
-        }
+#def decrypt(dec_map, enc_str_list){
+#        return dec_str_list
+#        }
 
-def main(){
-        permutate(dec_map, 1)
-        }
+#def main(){
+#        permutate(dec_map, 1)
+#        }
