@@ -14,44 +14,33 @@ enc_alph_list = list("ABCDEFGHIJKLMNOPQRSTUV")
 
 def main():
     i = 0
-    for perm in combinations_without_repetition(6, alphabet_list):
-        #out = str(i) + ": " + str(perm[2]) + str(perm[0])
-        #print(out)
+    inp = open('match_words.txt', 'r')
+    outp = open('oxford_output.txt', 'w')
+    while True:
+        line = inp.readline()
+        if not line:
+            break
+        perm = list(line.strip().lower())
         
         #map the 6 unique syms from jkllahm onto the full encrypted string
-        #j=0, k=1, l=2, a=3, h=4, m=5
+        #j=0, k=1, l=2, a=4, h=5, m=6 (no 3, because l is present twice)
         #unknowns replaced with asterisks
         #hook is full jkllahm sequence
         
-        hook = str(perm[0]) + str(perm[1]) + str(perm[2]) + str(perm[2]) + str(perm[3]) + str(perm[4]) + str(perm[5])
-        turing_key = str(perm[3]) + "******" + str(perm[4]) + "*" + hook + "**" + str(perm[1]) + "**********" + str(perm[3]) + "*" + str(perm[2]) + "**" + hook
+        hook = str(perm[0]) + str(perm[1]) + str(perm[2]) + str(perm[2]) + str(perm[4]) + str(perm[5]) + str(perm[6])
+        turing_key = str(perm[4]) + "******" + str(perm[5]) + "*" + hook + "**" + str(perm[1]) + "**********" + str(perm[4]) + "*" + str(perm[2]) + "**" + hook
 
         #verbose version
-        turing_key_verbose = str(perm[3]) + "BCDEFG" + str(perm[4]) + "I" + hook + "FN" + str(perm[1]) + "OPCQQRSKTT" + str(perm[3]) + "U" + str(perm[2]) + "HV" + hook
+        turing_key_verbose = str(perm[4]) + "BCDEFG" + str(perm[5]) + "I" + hook + "FN" + str(perm[1]) + "OPCQQRSKTT" + str(perm[4]) + "U" + str(perm[2]) + "HV" + hook
 
         #out = str(i) + ": " + hook + " :: " + turing_key
         out = turing_key + " :: Verbose: " + turing_key_verbose + " :: Key: " + hook + " :: Iteration: " + str(i)
         print(out)
+        outp.write(out)
+        outp.write("\n")
         i = i+1
-
-    i = 0
-
-    print("--------------------------------------------------------------------------------------------------------")
-    print("-------------------------------NO-NUMBERS-SECTION-BEGINS------------------------------------------------")
-    print("--------------------------------------------------------------------------------------------------------")
-
-    #same, but no numbers (in case jkllahm does not include any number)
-    for perm in combinations_without_repetition(6, alphabet_list_letter_only):
-        hook = str(perm[0]) + str(perm[1]) + str(perm[2]) + str(perm[2]) + str(perm[3]) + str(perm[4]) + str(perm[5])
-        turing_key = str(perm[3]) + "******" + str(perm[4]) + "*" + hook + "**" + str(perm[1]) + "**********" + str(perm[3]) + "*" + str(perm[2]) + "**" + hook
-
-        #verbose version
-        turing_key_verbose = str(perm[3]) + "BCDEFG" + str(perm[4]) + "I" + hook + "FN" + str(perm[1]) + "OPCQQRSKTT" + str(perm[3]) + "U" + str(perm[2]) + "HV" + hook
-
-        #out = str(i) + ": " + hook + " :: " + turing_key
-        out = turing_key + " :: Verbose: " + turing_key_verbose + " :: Key: " + hook + " :: Iteration: " + str(i)
-        print(out)
-        i = i+1
+    inp.close()
+    outp.close()
 
 main()
 
