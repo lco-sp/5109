@@ -6,7 +6,7 @@ http://www.scpwiki.com/scp-5109
 7lwords.txt filtered through list_limiter.py, then iterated through by oxford_5109.py  
 
 Frequency analysis:  
-k 4 VOCAL?  
+k 4 VOWEL?  
 a 4  
 h 4  
 l 5 (xx) CONSONANT?  
