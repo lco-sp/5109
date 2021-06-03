@@ -31,6 +31,6 @@ v 1
 
 jkllahm 2! Assumption: Is natural Word?
 
-
+oxford_output.txt: Candidates for jkllahm, includes matching words from Oxford English Dictionary and as much key as possible
 
 Nolan: Article notes "aberrance", possibly indicating a direct link between the symbol shown and the char/int encoded. Some symbols look similar to upside-down chars/ints, with some elements of the encoded char/int obscured/moved
